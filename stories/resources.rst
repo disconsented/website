@@ -31,12 +31,6 @@ PC Building
 
 `Megahertz Myth. <https://en.wikipedia.org/wiki/Megahertz_myth>`_
 
-Backblaze/Seagate. `(1) <http://www.tweaktown.com/articles/6028/dispelling-backblaze-s-hdd-reliability-myth-the-real-story-covered/index.html>`_ ,
-`(2) <https://www.backblaze.com/blog/wp-content/uploads/2015/10/blog_q3stats_manufacturer-e1444680042365.jpg>`_
-..
-
-    TL;DR There is nothing wrong with Seagate drives anyone who claims otherwise is likely using Backblaze as a source (even they agree there are no issues now), using annecdote or are being dishonest `(remember their market share) <http://www.forbes.com/sites/tomcoughlin/2015/01/29/hdd-annual-unit-shipments-increase-in-2014/>`_.
-
 `Freenode ##windows IRC resources. <http://www.freenode-windows.org/resources>`_
 
 `How to ask a smart question. <http://faculty.gvc.edu/ssnyder/121/Goodquestions.html>`_
