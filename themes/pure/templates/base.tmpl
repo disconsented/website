@@ -1,4 +1,3 @@
-##Inherits nothing, contains metadata and shit
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,10 +6,13 @@
     %if description:
             <meta name="description" content="${description}">
     %endif
-    <title>${title|striphtml} | ${blog_title|striphtml}</title>
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css" type="text/css">
-<link rel="stylesheet" href="/assets/css/pure.css" type="text/css">
-<link rel="stylesheet" href="/assets/css/side-menu.css" type="text/css">
+    %if title == blog_title:
+        <title>${blog_title|h}</title>
+    %else:
+        <title>${title|h} | ${blog_title|h}</title>
+%endif
+<link rel="stylesheet" href="/assets/css/pure-min.css" type="text/css">
+<link rel="stylesheet" href="/assets/css/custom.css" type="text/css">
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -24,6 +26,43 @@
 </script>
 </head>
 <body>
-<%block name="content"></%block>
+<div id="layout" class="pure-g">
+	<div class="sidebar pure-u-1-4 pure-u-md-1-4">
+		<div class="header">
+			<h1 class="brand-title">${title|h}</h1>
+			<h2 class="brand-tagline">${description|h}</h2>
+			<nav class="nav" id="menu">
+				<ul class="nav-list">
+				%for url, text in navigation_links[lang]:
+					% if isinstance(url, tuple):
+						<li class="nav-item"> ${text}
+						<ul class="nav-list">
+						%for suburl, text in url:
+							% if rel_link(permalink, suburl) == "#":
+								<li class="active"><a href="${permalink}">${text} <!--<span class="sr-only">${messages("(active)", lang)}</span>--></a></li>
+							%else:
+								<li><a class="pure-button" href="${suburl}">${text}</a></li>
+							%endif
+						%endfor
+						</ul>
+					% else:
+						% if rel_link(permalink, url) == "#":
+							<li class="nav-item active"><a class="pure-button" href="${permalink}">${text} <!--<span class="sr-only">${messages("(active)", lang)}--></span></a></li>
+						%else:
+							<li class="nav-item"><a class="pure-button" href="${url}">${text}</a></li>
+						%endif
+					% endif
+				%endfor
+				${template_hooks['menu']()}
+				${template_hooks['menu_alt']()}
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="content pure-u-3-4 pure-u-md-3-4">
+	<%block name="content"></%block>
+	</div>
+
 </body>
 </html>
+
