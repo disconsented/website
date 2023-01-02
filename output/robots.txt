@@ -1,0 +1,4 @@
+Sitemap: https://disconsented.com/sitemapindex.xml
+
+User-Agent: *
+Host: disconsented.com

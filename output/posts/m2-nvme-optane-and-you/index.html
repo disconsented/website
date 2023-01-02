@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0"
+        name="viewport">
+  <meta content="Clearing up some confusion with SSDs"
+        name="description">
+  <title>M.2, NVMe, Optane and You | disconsented</title>
+  <link href="../../assets/css/pure-min.css"
+        rel="stylesheet"
+        type="text/css">
+  <link href="../../assets/css/custom.css"
+        rel="stylesheet"
+        type="text/css">
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-70812649-2', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+</head>
+<body>
+  <div class="pure-g"
+       id="layout">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+      <div class="header">
+        <h1 class="brand-title">M.2, NVMe, Optane and You</h1>
+        <h2 class="brand-tagline">Clearing up some confusion with SSDs</h2>
+        <nav class="nav"
+             id="menu">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a class="pure-button"
+                  href="../../">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="pure-button"
+                  href="../../archive.html">Archive</a>
+            </li>
+            <li class="nav-item">
+              <a class="pure-button"
+                  href="../../categories/">Tags</a>
+            </li>
+            <li class="nav-item">
+              <a class="pure-button"
+                  href="../../rss.xml">RSS feed</a>
+            </li>
+            <li class="nav-item">
+              <a class="pure-button"
+                  href=
+                  "https://kiwiirc.com/client/irc.esper.net/#disconsented">Web
+                  IRC</a>
+            </li>
+            <li class="nav-item">
+              <a class="pure-button"
+                  href="../../pages/resources/">Resources</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="content pure-u-1 pure-u-md-3-4">
+      <article class="post-text h-entry hentry postpage post-meta"
+               itemscope="itemscope"
+               itemtype="http://schema.org/Article">
+        <header>
+          <h1 class="p-name entry-title"
+              itemprop="headline name"><a class="u-url"
+             href=".">M.2, NVMe, Optane and You</a></h1>
+          <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class=
+            "byline-name fn p-name"
+                  itemprop="author"><a class="u-url"
+               href="../../authors/james-kerr/">James Kerr</a></span></p>
+            <p class="dateline"><a href="."
+               rel="bookmark"><time class="published dt-published"
+                  datetime="2017-05-19T10:50:56+12:00"
+                  itemprop="datePublished"
+                  title="2017-05-19 10:50">2017-05-19 10:50</time></a></p>
+            <p class="commentline"><a data-disqus-identifier=
+            "cache/posts/m2-nvme-optane-and-you.html"
+               href="#disqus_thread">Comments</a></p>
+            <p class="sourceline"><a class="sourcelink"
+               href="index.rst">Source</a></p>
+          </div>
+        </header>
+        <div class="e-content entry-content post-description"
+             itemprop="articleBody text">
+          <div>
+            <p>There's a lot of confusion out in the wilds about SSD's and
+            their various technologies so I am going to provide a reference of
+            what everything is.</p><!-- TEASER_END -->
+            <p>To start with we have a handful of relevant terms:</p>
+            <ul class="simple">
+              <li>
+                <a class="reference external"
+                    href="https://en.wikipedia.org/wiki/M.2">M.2/NGFF</a>
+              </li>
+              <li>
+                <a class="reference external"
+                    href=
+                    "https://en.wikipedia.org/wiki/Advanced_Host_Controller_Interface">
+                Advanced Host Controller Interface (AHCI)</a>
+              </li>
+              <li>
+                <a class="reference external"
+                    href=
+                    "https://en.wikipedia.org/wiki/NVM_Express">Non-Volatile
+                    Memory Express (NVMe)</a>
+              </li>
+              <li>
+                <a class="reference external"
+                    href="https://en.wikipedia.org/wiki/Serial_ATA">Serial AT
+                    Attachment (SATA)</a>
+              </li>
+              <li>
+                <a class="reference external"
+                    href="https://en.wikipedia.org/wiki/PCI_Express">Peripheral
+                    Component Interconnect Express (PCIe)</a>
+              </li>
+            </ul>
+            <p>We will start with M.2 since it's the most misunderstood. People
+            tend to think it means the interface or protocol (PCIe or NVMe
+            respectively). In reality, the important thing to understand is
+            that it is simply a form factor and has little impact on the real
+            world (boot times, load times) performance of the drive. This is
+            best compared to the 2.5” and PCIe form factors (not to be confused
+            with the PCIe interface).</p>
+            <p>M.2 has the ability to use SATA, PCIe, or USB 3.0 interfaces,
+            but for our purposes we’re only concerned with PCIe and SATA.</p>
+            <p>AHCI is the legacy (read: old) protocol developed by Intel for
+            interfacing mechanical hard drives(controllers) with the rest of
+            the system.</p>
+            <p>NVMe is the replacement for AHCI; the important thing here is
+            that it has been designed to be used specifically with SSD’s and as
+            a result can allow them to better utilize the bandwidth provided
+            via the PCIe bus.</p>
+            <p>SATA is the interface that most SSD’s use to transfer
+            information between the SSD and the rest of the computer. Although
+            technically not legacy, it has been superseded by PCIe.</p>
+            <p>PCIe is another relatively old interface. The important
+            distinction between this and SATA is that PCIe is not just for
+            storage devices due to it having massively more bandwidth. A single
+            PCIe 3.0 lane provides 7.88Gb/s of bandwidth which scales up to
+            126Gb/s with 16 lanes. This is what enables modern SSD’s raw
+            bandwidth.</p>
+            <p>This is great and all but what does it mean for the average
+            user?</p>
+            <p>Practically nothing, the problem is that the performance
+            difference just doesn't matter for consumers.</p>
+            <p>As shown by <a class="reference external"
+               href=
+               "http://techreport.com/review/30993/samsung-960-evo-ssd-reviewed/5">
+            Techreport’s Samsung 960 EVO review</a>, there is no noticeable
+            difference in boot times or application (including game) load times
+            when compared to the older SATA based SSDs. PCIe/NVMe SSD’s are
+            just <strong>not worth the price premium</strong>, so when shopping
+            for an SSD look for what is the <strong>best value drive
+            ($/GB)</strong>.</p>
+            <p><a class="reference external"
+               href="https://en.wikipedia.org/wiki/3D_XPoint">3D Xpoint (also
+               known as Optane)</a> is a collaborative effort between Intel and
+               Micron to attempt to bridge the gap between DRAM and classic
+               NAND storage. This provides many of the performance benefits, to
+               a lesser extent, of DRAM (specifically in low latencies and
+               higher bandwidth) but with the bonus of it being Non-Volatile.
+               In English, this means when the drive is unpowered it will keep
+               what's stored on it. Ultimately besides this being a fledgling
+               technology this has the same practical problem as PCIe SSD’s.
+               It’s not worth what it costs and is only really a consideration
+               for workstations and servers.</p>
+          </div>
+        </div>
+        <aside class="postpromonav">
+          <nav>
+            <!--
+        <ul itemprop="keywords" class="tags">
+            <li><a class="tag p-category" href="/categories/educational/" rel="tag">Educational</a></li>
+            <li><a class="tag p-category" href="/categories/rant/" rel="tag">Rant</a></li>
+            <li><a class="tag p-category" href="/categories/ssd/" rel="tag">SSD</a></li>
+        </ul>
+--><!--
+        <ul class="pager hidden-print">
+            <li class="previous">
+                <a href="/posts/aggregating-skylake-memory-performance/" rel="prev" title="Aggregating skylake memory performance">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="/posts/whoops/" rel="next" title="Whoops!">Next post</a>
+            </li>
+        </ul>
+-->
+          </nav>
+        </aside>
+        <section class="comments hidden-print">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+          <script>
+          var disqus_shortname ="disconsentedcom",
+            disqus_url="https://disconsented.com/posts/m2-nvme-optane-and-you/",
+          disqus_title="M.2, NVMe, Optane and You",
+          disqus_identifier="cache/posts/m2-nvme-optane-and-you.html",
+          disqus_config = function () {
+            this.language = "en";
+          };
+          (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+          </script><noscript>Please enable JavaScript to view the <a href=
+          "https://disqus.com/?ref_noscript"
+             rel="nofollow">comments powered by Disqus.</a></noscript> <a class=
+             "dsq-brlink"
+                   href="https://disqus.com"
+                   rel="nofollow">Comments powered by <span class=
+                   "logo-disqus">Disqus</span></a>
+        </section>
+      </article>
+      <script>
+      var disqus_shortname="disconsentedcom";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());
+      </script>
+    </div>
+  </div>
+</body>
+</html>
