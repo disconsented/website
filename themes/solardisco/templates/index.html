@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+{% set section = get_section(path="blog/_index.md") %}
+{% for entry in section.pages %}
+<article class="section">
+    <div class="card">
+        <div class="card-content">
+            <div class="content">
+                <a href="{{entry.permalink}}">
+                    <h2 class="title">{{entry.title}}</h2>
+                </a>
+                <time datetime="{{entry.updated}}">{{entry.updated | date(format="%b %d, %Y")}}</time>
+                <div class="content">
+                    {{entry.summary | safe}}
+                </div>
+            </div>
+        </div>
+        <footer class="card-footer">
+            <a class="card-footer-item" href="{{entry.permalink}}">
+                Continue Reading, est reading time: {{entry.reading_time}} minutes
+            </a>
+        </footer>
+    </div>
+</article>
+{% endfor %}
+{% endblock content %}

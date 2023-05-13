@@ -1,0 +1,9 @@
+{% import "macros/breadcrumb.html" as breadcrumb %}
+{% extends "base.html" %}
+{% block content %}
+<div class="block">
+   {#{{__tera_context}}#}
+        {#{{ current_path | split(pat="/")}}#}
+        {{ breadcrumb::breadcrumb(path=current_path | split(pat="/") ) }}
+</div>
+{% endblock content %}

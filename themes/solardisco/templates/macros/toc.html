@@ -1,0 +1,10 @@
+{% macro toc(toc) %}
+        <ul>
+        {% for entry in toc %}
+            <li>
+                <a href="#{{entry.id}}">{{entry.title}}</a>
+                {{self::toc(toc=entry.children)}}
+            </li>
+        {% endfor %}
+        </ul>
+{% endmacro input %}

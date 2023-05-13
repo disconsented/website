@@ -1,0 +1,14 @@
+{% macro breadcrumb(path) %}
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    {% set link = [] %}
+    {% for element in path %}
+      {% if element != "" %}
+        {% set_global link = link | concat(with=element) %}
+      {{link}}
+        <li {% if loop.last%}class="is-active"{% endif %}><a href="{{link | join(sep='/')}}" {% if loop.last%}aria-current="page"{% endif %}>{{element}}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
+{% endmacro breadcrumb %}

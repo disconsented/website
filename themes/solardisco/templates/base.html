@@ -1,0 +1,117 @@
+{% import "macros/toc.html" as toc %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>{% block title %}{% endblock title %}</title>
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/1b4ac86760.js"></script>
+    <script src="/theme.js"></script>
+    <script type="text/javascript">
+        window.onload = (event) => {
+            let theme = localStorage.getItem("theme");
+            document.getElementById(theme + "-theme").classList.remove("is-hidden");
+        };
+        let link = document.createElement("link");
+        let theme = localStorage.getItem("theme");
+        if (theme === null) {
+            localStorage.setItem("theme", "light");
+            theme = "light";
+        }
+        link.href = "/" + theme + ".css";
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.media = "screen,print";
+        link.id = "theme"
+        document.getElementsByTagName("head")[0].appendChild(link);
+        document.getElementById(theme + "-theme").classList.remove("is-hidden");
+    </script>
+    {% endblock head %}
+</head>
+<body class="has-background-light">
+<div class="section">
+    <div class="columns">
+        <div class="column is-one-fifth"></div>
+        <div class="column is-three-fifths">
+            <nav class="navbar is-light">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="{{config.base_url}}">
+                        <figure class="image">
+                            {% set meta = get_image_metadata(path=config.extra.avatar) %}
+                            <img src="/{{config.extra.avatar}}">
+                        </figure>
+                    </a>
+                    <a class="navbar-item is-size-2" href="{{config.base_url}}">
+                        <div class="is-size=2">Disconsented</div>
+                    </a>
+                    <a class="navbar-item is-hidden" id="light-theme" onclick="set_theme('dark')">
+                          <span class="icon">
+                            <i class="fa-solid fa-sun"></i>
+                          </span>
+                    </a>
+                    <a class="navbar-item is-hidden" id="dark-theme" onclick="set_theme('light')">
+                          <span class="icon">
+                            <i class="fa-solid fa-moon"></i>
+                          </span>
+                    </a>
+                    <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="navbar-menu" id="narvar">
+                    <div class="navbar-end">
+                        {% for item in config.extra.navbar %}
+                        <a class="navbar-item" href={{item.url}}>
+                            {{item.text}}
+                        </a>
+                        {% endfor %}
+                        {% for item in config.extra.social_media %}
+                        <a class="navbar-item" href="https://bulma.io/">
+                            {{item.name}}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="column is-one-fifth"></div>
+    </div>
+</div>
+<div class="section">
+    <div class="columns">
+        <div class="column is-one-fifth"></div>
+        <div class="column is-three-fifths">
+            <div class="container">
+                {% block content %}{% endblock content %}
+            </div>
+        </div>
+        <div class="column is-one-fifth">
+            {% if page %}
+            {% if page.extra.toc %}
+            <div class="block content">
+                {{ toc::toc(toc=page.toc) }}
+            </div>
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="columns">
+        <div class="column is-one-fifth"></div>
+        <div class="column is-three-fifths">
+            <div class="container">
+                {% block footer %}
+                &copy; Copyright 2023 by <a href="https://disconsented.com/">James Kerr</a>.
+                {% endblock footer %}
+            </div>
+        </div>
+        <div class="column is-one-fifth"></div>
+    </div>
+</footer>
+</body>
+</html>
