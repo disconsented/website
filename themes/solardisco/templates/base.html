@@ -10,22 +10,22 @@
     <script src="/theme.js"></script>
     <script type="text/javascript">
         window.onload = (event) => {
+            let link = document.createElement("link");
             let theme = localStorage.getItem("theme");
             document.getElementById(theme + "-theme").classList.remove("is-hidden");
+            if (theme === null) {
+                localStorage.setItem("theme", "dark");
+                theme = "dark";
+            }
+            link.href = "/" + theme + ".css";
+            link.type = "text/css";
+            link.rel = "stylesheet";
+            link.media = "screen,print";
+            link.id = "theme"
+            document.getElementsByTagName("head")[0].appendChild(link);
+            document.getElementById(theme + "-theme").classList.remove("is-hidden");
         };
-        let link = document.createElement("link");
-        let theme = localStorage.getItem("theme");
-        if (theme === null) {
-            localStorage.setItem("theme", "light");
-            theme = "light";
-        }
-        link.href = "/" + theme + ".css";
-        link.type = "text/css";
-        link.rel = "stylesheet";
-        link.media = "screen,print";
-        link.id = "theme"
-        document.getElementsByTagName("head")[0].appendChild(link);
-        document.getElementById(theme + "-theme").classList.remove("is-hidden");
+
     </script>
     {% endblock head %}
 </head>
@@ -69,7 +69,7 @@
                         </a>
                         {% endfor %}
                         {% for item in config.extra.social_media %}
-                        <a class="navbar-item" href="https://bulma.io/">
+                        <a class="navbar-item" href="{{item.url}}">
                             {{item.name}}
                         </a>
                         {% endfor %}
@@ -106,7 +106,7 @@
         <div class="column is-three-fifths">
             <div class="container">
                 {% block footer %}
-                &copy; Copyright 2023 by <a href="https://disconsented.com/">James Kerr</a>.
+                &copy; Copyright 2015-{{ now() | date(format="%Y") }}  by <a href="https://disconsented.com/">James Kerr</a>.
                 {% endblock footer %}
             </div>
         </div>

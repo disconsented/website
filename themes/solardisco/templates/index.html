@@ -1,23 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
-{% set section = get_section(path="blog/_index.md") %}
-{% for entry in section.pages %}
+<nav class="pagination" role="navigation" aria-label="pagination">
+    <a class="pagination-previous{% if not paginator.previous %} is-disabled{% endif %}"
+       {% if paginator.previous %}href="{{ paginator.previous }}"{% endif %}
+    >Previous</a>    
+    <a class="pagination-next{% if not paginator.next %} is-disabled{% endif %}"
+       {% if paginator.next %}href="{{ paginator.next }}"{% endif %}
+    >Next</a>
+</nav>
+{% for page in paginator.pages %}
 <article class="section">
     <div class="card">
         <div class="card-content">
             <div class="content">
-                <a href="{{entry.permalink}}">
-                    <h2 class="title">{{entry.title}}</h2>
+                <a href="{{page.permalink}}">
+                    <h2 class="title">{{page.title}}</h2>
                 </a>
-                <time datetime="{{entry.updated}}">{{entry.updated | date(format="%b %d, %Y")}}</time>
+                <time datetime="{{page.updated}}">{{page.updated | date(format="%b %d, %Y")}}</time>
                 <div class="content">
-                    {{entry.summary | safe}}
+                    {%- if page.summary %}
+                    {{ page.summary | markdown(inline=true) | safe }}
+                    {%- elif page.description %}
+                    {{ page.description | safe }}
+                    {%- elif page.content %}
+                    {{ page.content | striptags | truncate(length=150) | safe }}
+                    {%- elif page.extra.static_thumbnail %}
+                    {%- endif %}
                 </div>
             </div>
         </div>
         <footer class="card-footer">
-            <a class="card-footer-item" href="{{entry.permalink}}">
-                Continue Reading, est reading time: {{entry.reading_time}} minutes
+            <a class="card-footer-item" href="{{page.permalink}}">
+                Continue Reading, est reading time: {{page.reading_time}} minutes
             </a>
         </footer>
     </div>

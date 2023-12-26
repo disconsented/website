@@ -13,14 +13,13 @@ demo = ""
 # Use snake_casing to be consistent with the rest of Zola
 [extra]
 
-# The theme author info: you!
 [author]
-name = "Vincent Prouillet"
+name = "James Kerr"
 homepage = "https://vincent.is"
 
 # If this is porting a theme from another static site engine, provide
 # the info of the original author here
 [original]
-author =  "mdo"
+author =  "Disconsented"
 homepage = "https://markdotto.com/"
 repo = "https://www.github.com/mdo/hyde"

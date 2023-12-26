@@ -10,12 +10,12 @@ draft = false
 
 #### PixelPond.io 
 Infrastructure as a Service business, with custom billing software, leveraging Stripe as a payment processor. Written in Rust. 
+Now defunct do to Cost Per Acquisition relative to turn over rates.
 
 # Professional
 
-- A virtual filesystem w/ asynchronous IO written in Rust for Cloud Native :tm: serverless PHP.  
-- A high performance ML daemon for AI assisted photography culling. Written in Rust using Tokio, Warp,TFlite & Apache.
-  TVM.
+- A distributed virtual filesystem w/ asynchronous IO written in Rust for Cloud Native :tm: serverless PHP.  
+- A Mac OS native high performance, soft real time, RAW image processing & Machine Learning Daemon written in Rust. 
 - TR-069(CWMP) Server written in Golang using RethinkDB and Vue.js.
 
 ## Historical/Archived

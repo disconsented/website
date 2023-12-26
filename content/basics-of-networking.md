@@ -1,8 +1,8 @@
 +++
 title = "All The Things They Don't Tell You About Port Forwarding."
 description = "A guide to understanding port forward for the diligent learner."
-date = 2021-04-20T09:19:42+00:00
-updated = 2021-04-20T09:19:42+00:00
+date = 2023-12-26T16:35:00+13:00
+updated = 2023-12-26T16:35:00+13:00
 draft = false
 [taxonomies]
 year = ["2023"]
@@ -82,36 +82,38 @@ Remember that weird address from the NAT table before, `0.0.0.0`?  It's a specia
 Have you ever noticed how some servers let you specify an address?
 > E.g. `server-ip=`
 
-When you specify a value
+When you specify a value, you're telling the application to only listen to that address. Typically, you'll want this when you have a machine with multiple addresses and several services with the same ports. For example: `10.0.0.2:25565` & `10.0.0.3:25565`.
 ## Private/LAN Address
-## Public/WAN Address
-## IPv4 & IPv6
-## OSI Model
+Previously, we discussed how NAT works and its role in connecting your server to the internet. As every device on the network needs an address to be reachable, and there are not enough IP(v4) addresses for each machine to have a unique one. The IETF [set aside various address spaces](https://en.wikipedia.org/wiki/Private_network#Private_IPv4_addresses) for private use.
 
-    7, application
+This overlap, combined with NAT is largely how the problem of IPv4 address exhaustion was tackled. It is important to understand how this works for understanding how your traffic is directed.
+
+## Public/WAN Address
+Essentially, the _globally unique_ address by which you can be reached. This will be the address of your _CPE_ for IPv4 networks and how your network can be found on the internet.
+## IPv4 & IPv6
+The Internet Protocol (IP) is essentially the layer that lets you route traffic between the interconnected networks of the internet, largely in v4 and v6 layers. A brief description, but it covers the broad strokes.
+
+Programmatically, IPv4 and IPv6 are made up of 32 bits and 128 bits, respectively. The adoption of IPv6 is largely driven by the IPv4 address exhaustion problem, consequently, this is why NAT has seen widespread adoption. Every bit you add, doubles the range of numbers that you can represent. IPv4 can represent roughly 4 million addresses (with special ranges not for general use), IPv6 can represent 340 ***undecillion*** addresses. These are enough addresses that practically every device on the internet can have its own unique address, in residential settings, instead of a single IPv4 address you'll typically have an IPv6 _prefix_.
+
+ISPs have been historically slow to adopt IPv6 through a lack of demand and the equipment cost behind it. However, support for IPv6 has grown to the point where it is not unusual to see it being offered to residential customers.
+
+Furthermore, because of the support for IPv6 in major services, ISPs are supporting it as a way of reducing load on their CGNAT equipment, consequently saving significant cost on equipment.
 
 ## MAC Binding (I.E. how does the router know where to direct traffic)
-CPE may internally statically resolve the
+Network interfaces don't have an IP address directly associated with them, instead, each interface has its own unique hardware address that needs to be mapped against an IP address to be routable. This is done with the Address Resolution Protocol, network equipment will keep a collection of these mappings to know how to route traffic to interfaces across the network.
 ## TCP Dump & Wireshark
+Just to raise awareness of these tools, TCP Dump & Wireshark are packet capture tools that can be used to capture, analyse network traffic, consequently they're excellent tools for diagnosing issues.
+
+However, these tools are complex enough that I won't be able to do them justice.
 ## Firewall Logs
-## Glossary
-
-### <abbr title="Internet Service Provider">ISP</abbr>
-### <abbr title="Customer Premises Equipment">CPE</abbr>
-### <abbr title="Address Resolution Protocol">ARP</abbr>
-### <abbr title="Media Access Control">MAC Address</abbr>
-### <abbr title="Wide Area Network">WAN</abbr>
-### <abbr title="Local Area Network">LAN</abbr>
-### Router
-### Switch
-### Quad 0
-    
-    
+Not a specific tool but rather a concept, most firewall solutions (whether they're on a CPE or a server) have an option of logging events. This is a great step for sanity checking whether traffic is hitting a particular device, as an example. 
     
     
 
-Addendum 1—Fail to Bind
+### Addendum 1 — Fail to Bind (Address already in use)
 
-    Address port pair is already in use
-    No adapters with an address
-    You bound to an address not Quad0
+    Typically, this is one of the following :
+
+    Address port pair is already in use, to resolve this, pick another unique combination or stop whatever is using that one.
+    Using a port from the reserved range, user space applications must use a port >1024.
+    No adapters with the specified address, for multiple routable addresses, assign them to the interface, otherwise bind to Quad0.
