@@ -12,7 +12,6 @@
         window.onload = (event) => {
             let link = document.createElement("link");
             let theme = localStorage.getItem("theme");
-            document.getElementById(theme + "-theme").classList.remove("is-hidden");
             if (theme === null) {
                 localStorage.setItem("theme", "dark");
                 theme = "dark";
