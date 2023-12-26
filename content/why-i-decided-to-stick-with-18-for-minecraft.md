@@ -14,6 +14,9 @@ and five months (30/04/2014 was the creation date of the repository)
 that I had finally released it however with one quirk; it was released
 for 1.8 only and a few people have asked why/for a 1.7.10 version.
 
+<!-- more -->
+
+
 I want to make it clear that I only wish to maintain and work on one
 version myself (although I am open to someone else maintaining a 1.7.10
 version) this was for a few reasons, the biggest being that I have
