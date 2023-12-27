@@ -9,19 +9,19 @@
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/1b4ac86760.js"></script>
     <script src="/theme.js"></script>
     <script type="text/javascript">
+        let link = document.createElement("link");
+        let theme = localStorage.getItem("theme");
+        if (theme === null) {
+            localStorage.setItem("theme", "dark");
+            theme = "dark";
+        }
+        link.href = "/" + theme + ".css";
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.media = "screen,print";
+        link.id = "theme"
+        document.getElementsByTagName("head")[0].appendChild(link);
         window.onload = (event) => {
-            let link = document.createElement("link");
-            let theme = localStorage.getItem("theme");
-            if (theme === null) {
-                localStorage.setItem("theme", "dark");
-                theme = "dark";
-            }
-            link.href = "/" + theme + ".css";
-            link.type = "text/css";
-            link.rel = "stylesheet";
-            link.media = "screen,print";
-            link.id = "theme"
-            document.getElementsByTagName("head")[0].appendChild(link);
             document.getElementById(theme + "-theme").classList.remove("is-hidden");
         };
 
@@ -29,7 +29,7 @@
     {% endblock head %}
 </head>
 <body class="has-background-light">
-<div class="section">
+<nav class="section">
     <div class="columns">
         <div class="column is-one-fifth"></div>
         <div class="column is-three-fifths">
@@ -37,12 +37,12 @@
                 <div class="navbar-brand">
                     <a class="navbar-item" href="{{config.base_url}}">
                         <figure class="image">
-                            {% set meta = get_image_metadata(path=config.extra.avatar) %}
-                            <img src="/{{config.extra.avatar}}">
+                            {% set image = resize_image(path=config.extra.avatar, height=28, op="fit_height") %}
+                            <img src="{{ image.url }}">
                         </figure>
                     </a>
                     <a class="navbar-item is-size-2" href="{{config.base_url}}">
-                        <div class="is-size=2">Disconsented</div>
+                        <div class="is-size-2">Disconsented</div>
                     </a>
                     <a class="navbar-item is-hidden" id="light-theme" onclick="set_theme('dark')">
                           <span class="icon">
@@ -78,7 +78,7 @@
         </div>
         <div class="column is-one-fifth"></div>
     </div>
-</div>
+</nav>
 <div class="section">
     <div class="columns">
         <div class="column is-one-fifth"></div>
