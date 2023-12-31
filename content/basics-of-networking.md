@@ -20,7 +20,7 @@ Given my years of experience inside varying Minecraft Server communities (shout 
 
 The goal of this guide is to explain enough for folks to get started, with a focus on teaching a set of tools (both software and logical) to diagnose their home networks.
 
-What this guide, _isn't_, is a complete guide to port forwarding with X ISP or Y CPE. Due diligence on the part of the reader is expected, this is fork feeding, not spoon-feeding.
+What this guide, _isn't_, is a complete guide to port forwarding with X ISP or Y <abbr title="Customer Premesis Equipment">CPE</abbr> (typically a router). Due diligence on the part of the reader is expected, this is fork feeding, not spoon-feeding.
 
 ## What is N.A.T?
 N.A.T. or Network Address Translation (like most acronyms) is quite a literally named. In a nutshell, it's the idea that a network device can take a request and then _translate_ it to another address.
