@@ -37,8 +37,8 @@
 <body class="has-background-light">
 <nav class="section">
     <div class="columns">
-        <div class="column is-one-fifth"></div>
-        <div class="column is-three-fifths">
+        <div class="column"></div>
+        <div class="column is-four-fifths">
             <nav class="navbar is-light">
                 <div class="navbar-brand">
                     <a class="navbar-item" href="{{config.base_url}}">
@@ -82,24 +82,22 @@
                 </div>
             </nav>
         </div>
-        <div class="column is-one-fifth"></div>
+        <div class="column"></div>
     </div>
 </nav>
 <div class="section">
     <div class="columns">
-        <div class="column is-one-fifth"></div>
-        <div class="column is-three-fifths">
+        <div class="column"></div>
+        <div class="column {% if page.extra.toc %}is-8{%else%}is-four-fifths{% endif %}">
             <div class="container">
                 {% block content %}{% endblock content %}
             </div>
         </div>
-        <div class="column is-one-fifth">
-            {% if page %}
+        <div class="column {% if page.extra.toc %}is-one-fifth{% endif %}">
             {% if page.extra.toc %}
             <div class="block content">
                 {{ toc::toc(toc=page.toc) }}
             </div>
-            {% endif %}
             {% endif %}
         </div>
     </div>
@@ -107,15 +105,16 @@
 
 <footer class="footer">
     <div class="columns">
-        <div class="column is-one-fifth"></div>
-        <div class="column is-three-fifths">
+        <div class="column"></div>
+        <div class="column is-four-fifths">
             <div class="container">
                 {% block footer %}
-                &copy; Copyright 2015-{{ now() | date(format="%Y") }}  by <a href="https://disconsented.com/">James Kerr</a>.
+                &copy; Copyright 2015-{{ now() | date(format="%Y") }} by <a href="https://disconsented.com/">James
+                Kerr</a>.
                 {% endblock footer %}
             </div>
         </div>
-        <div class="column is-one-fifth"></div>
+        <div class="column"></div>
     </div>
 </footer>
 </body>
