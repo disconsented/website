@@ -5,4 +5,10 @@ $white-ter: $base03
 $white: $base02
 $grey-darker: $base2
 $scheme-main-bis: $base02
+
+// Fix hr
+@import "helpers/color"
+hr
+  background-color: bulmaLighten($white-ter, 10%) !important
+
 @import "bulma"
