@@ -2,8 +2,13 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="block">
-   {#{{__tera_context}}#}
-        {#{{ current_path | split(pat="/")}}#}
-        {{ breadcrumb::breadcrumb(path=current_path | split(pat="/") ) }}
+    <h2 class="title">Taxonomy: {{term.name}}</h2>
+    <ul>
+        {% for entry in term.pages %}
+        <li>
+            <a href="{{entry.path}}">{{entry.title}}</a>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock content %}

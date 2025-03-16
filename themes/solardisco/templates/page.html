@@ -10,12 +10,22 @@
         {{page.content | markdown | safe}}
     </div>
 </div>
-<div class="block">
-    {% if page.taxonomies.categories %}
-        {% for category in page.taxonomies.categories %}
-        <a href="" class="button is-info is-outlined">{{category}}</a>
-        {% endfor %}
-    {% endif %}
-</div>
+<article class="media box">
+    <hr/>
+    <div class="media-content">
+        <div class="content">
+            <p>
+                <strong>Taxonomy</strong>
+                <br/>
+                {% if page.taxonomies.categories %}
+                {% for category in page.taxonomies.categories %}
+                <a href="/categories/{{category}}" class="button is-info is-outlined">{{category}}</a>
+                {% endfor %}
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</article>
+
 {% endblock content %}
 {% block title %}{{page.title}}{% endblock title %}
