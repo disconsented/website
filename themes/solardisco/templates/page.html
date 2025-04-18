@@ -10,6 +10,7 @@
         {{page.content | markdown | safe}}
     </div>
 </div>
+{% if page.taxonomies.categories %}
 <article class="media box">
     <hr/>
     <div class="media-content">
@@ -17,15 +18,14 @@
             <p>
                 <strong>Taxonomy</strong>
                 <br/>
-                {% if page.taxonomies.categories %}
                 {% for category in page.taxonomies.categories %}
                 <a href="/categories/{{category}}" class="button is-info is-outlined">{{category}}</a>
                 {% endfor %}
-                {% endif %}
             </p>
         </div>
     </div>
 </article>
+{% endif %}
 
 {% endblock content %}
 {% block title %}{{page.title}}{% endblock title %}
