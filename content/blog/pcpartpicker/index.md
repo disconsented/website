@@ -71,7 +71,9 @@ Broadly preferable to the first option, this lets us choose the name and type fo
 _Always_ mark purchased parts as purchased, even if everything is purchased. This makes it clear what parts will be
 replaced/need to be filled out and those that don't.
 
-![](purchased.png)\\### 9. Check compatibility warnings.
+![](purchased.png)
+
+### 9. Check compatibility warnings.
 
 Most of these are straightforward, when in doubt, ask for help.
 
