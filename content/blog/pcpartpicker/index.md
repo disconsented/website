@@ -24,7 +24,7 @@ reliably putting together the right parts list for your upgrade or fresh pc buil
 
 ### 1. Choose the closest country.
 
-The country tells us parts availability and prices, these do very regularly. For this, reason, It's important to pick
+The country tells us parts availability and prices, these do vary regularly. For this, reason, It's important to pick
 the country you're _purchasing from_.
 
 ### 2. Select either highlighted button to go to https://[REGION.]pcpartpicker.com/list/
