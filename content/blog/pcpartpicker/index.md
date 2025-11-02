@@ -1,33 +1,44 @@
 +++
-title = "How To PcPartPicker"
+title = "How To PCPartPicker"
 date =  2025-01-02T21:23:05.469
-updated = 2025-01-02T21:23:05.469
+updated = 2025-11-03T21:23:05.469
 draft = false
 [taxonomies]
 year = ["2025"]
 +++
 
 Often, I need to explain to folks what's expected when I ask for a "pcpartpicker list". I've also gotten tired of playing
-20 questions trying to wrangle out the information that I care about. So, here's a quick and dirty guide to PcPartPicker
+20 questions trying to wrangle out the information that I care about. So, here's a quick and dirty guide to PCPartPicker
 lists™.
 
 <!-- more -->
 
 ## Why use PCPartPicker?
 
-PCPartPicker is a _free_ pc part selection, pricing and compatibility checking. It has become the de-facto tool for
+PCPartPicker is a _free_ website for pc part selection, pricing and compatibility checking. It has become the de-facto tool for
 reliably putting together the right parts list for your upgrade or fresh pc build.
 
-## Yes this is an exercise in reading comprehension!
+## Yes, this is an exercise in reading comprehension!
 
-![](pcpartpicker-1.png)
+So, please don't skip any of the steps here. Be conscious of the effort that folks are putting in, to help you. Fight against support burn out by being comprehensive and forthcoming.
 
-### 1. Choose the closest country.
+### Getting started
+
+Select your country and start your list by clicking either the "Builder" link in the toolbar (which is accessible across most of the site), or, "Start Your Build" on the home page.
 
 The country tells us parts availability and prices, these do vary regularly. For this, reason, It's important to pick
 the country you're _purchasing from_.
 
-### 2. Select either highlighted button to go to https://[REGION.]pcpartpicker.com/list/
+
+![](pcpartpicker-1.png)
+
+### 1. Check your country.
+
+PCPartPicker defaults to its US site, as previously mentioned, the country changes a lot, and it's difficult to make many recommendations when parts aren't available or prices change.
+
+Pick the _closest_ country to where you're _purchasing from__, if your region isn't served, then please make sure  folks who are helping you know where you're from.
+
+### 2. Select either highlighted button to go to `https://[REGION.]pcpartpicker.com/list/`
 
 ![](pcpartpicker-2.png)
 
@@ -69,7 +80,7 @@ Broadly preferable to the first option, this lets us choose the name and type fo
 ### 8. Mark parts as purchased.
 
 _Always_ mark purchased parts as purchased, even if everything is purchased. This makes it clear what parts will be
-replaced/need to be filled out and those that don't.
+replaced/need to be filled out, and those that don't.
 
 ![](purchased.png)
 
